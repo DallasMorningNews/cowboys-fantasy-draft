@@ -115,7 +115,7 @@ $(document).ready(function() {
 
 					// replace the player's name with "Choose a player", zero out the salary, and return the image to the default
 					$(this).find('.slotName').text('Choose a player');
-					$(this).find('.salary').text("");
+					$(this).find('.salary').text("—");
 					$(this).find('img').attr('src', defaultImage);
 
 					// unmark that slot as filled, and reset the data-cost to 0
@@ -148,8 +148,8 @@ $(document).ready(function() {
 		}
 
 
-		$availSal.text(salRemaining);
-		$totalSal.text(salTotal);
+		$availSal.text("$" + salRemaining);
+		$totalSal.text("$" + salTotal);
 
 		// runs the function "affordables" to see if user an afford players
 		affordables();
@@ -217,7 +217,7 @@ $(document).ready(function() {
 
 			//switch the button back to it's default
 			$(this).parent('.posSlot').removeClass('selected');
-			$(this).html('Select');
+			$(this).find('.fa').toggleClass('fa-minus-circle').toggleClass('fa-plus-circle');
 
 			//update our position slot counters
 			position === "qb" ? qbSlot-- : position === "rb" ? rbSlot-- : position === "wr" ? wrSlot-- : position === "def" ? dSlot-- : kSlot--;
@@ -231,7 +231,7 @@ $(document).ready(function() {
 		} else {
 			//mark this player as selected
 			$(this).parent('.posSlot').addClass('selected')
-			$(this).html('Remove');
+			$(this).find('.fa').toggleClass('fa-minus-circle').toggleClass('fa-plus-circle');
 
 			//update our position slot counters
 			position === "qb" ? qbSlot++ : position === "rb" ? rbSlot++ : position === "wr" ? wrSlot++ : position === "def" ? dSlot++ : kSlot++;
@@ -274,7 +274,7 @@ $(document).ready(function() {
 		$posSlot.each(function(k,v) {
 			if ($(this).children('img').attr('src') === currentImage ) {
 				$(this).removeClass('selected');
-				$(this).children('button').text('Select');
+				$(this).find('.fa').toggleClass('fa-plus-circle').toggleClass('fa-minus-circle');
 			}
 		});
 
