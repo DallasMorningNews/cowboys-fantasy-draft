@@ -844,106 +844,120 @@ XXI. COWBOYS ROSTER
 -------------------------------------------
 */
 #cowboysGame {
-  padding-top: 3rem;
   position: relative; }
 
 #roster {
-  float: left;
-  width: 400px;
+  position: absolute;
+  max-width: 300px;
+  width: 100%;
   font-family: "Open Sans", Arial, sans-serif;
-  border: 1px solid #acc0c6;
-  border-radius: 5px;
-  position: relative; }
+  left: 0;
+  top: 0; }
+  #roster.fixedRoster {
+    position: fixed !important;
+    top: 100px; }
+  #roster.bottomRoster {
+    position: absolute !important;
+    bottom: 70px;
+    top: auto !important; }
 
 .rosterSlot {
   width: 100%;
-  padding: 1rem 1rem 1rem 1rem;
+  padding: 1rem 0rem 1rem 3rem;
   position: relative;
-  border-bottom: 1px solid #acc0c6;
+  border-top: 1px solid #acc0c6;
+  border-right: 1px solid #acc0c6;
   height: 70px; }
-  .rosterSlot:first-of-type {
-    border-top: none; }
   .rosterSlot:last-of-type {
-    border-bottom: none;
-    background-color: #002244; }
+    border-right: none;
+    padding: 0 0;
+    border-bottom: 1px solid #acc0c6;
+    height: auto; }
+    .rosterSlot:last-of-type h6 {
+      width: 33.33%;
+      float: left;
+      border-right: 1px solid #acc0c6;
+      padding: 1rem;
+      font: 1.4rem/1.8rem "Open Sans", Arial, sans-serif;
+      text-align: center;
+      margin-bottom: 0;
+      text-transform: uppercase; }
+      .rosterSlot:last-of-type h6 .sal, .rosterSlot:last-of-type h6 i {
+        display: block;
+        text-align: center;
+        font-size: 2rem;
+        line-height: 2.4rem;
+        font-weight: 600; }
+    .rosterSlot:last-of-type .clearRoster {
+      transition: background-color .2s ease-out;
+      cursor: pointer; }
+      .rosterSlot:last-of-type .clearRoster i {
+        color: #c60c30;
+        background-color: initial; }
+      .rosterSlot:last-of-type .clearRoster:hover {
+        background-color: #e1e1e1; }
   .rosterSlot .playerInfo {
     float: left;
-    width: calc(100% - 170px); }
-  .rosterSlot h4 {
-    text-align: center;
-    color: white;
-    line-height: 5rem; }
+    width: calc(100% - 130px); }
   .rosterSlot h5 {
     color: #3d3d3d;
     letter-spacing: -.5px;
-    line-height: 5rem;
-    float: left;
-    font-weight: 600; }
+    line-height: 1.8rem;
+    font-weight: 600;
+    font-size: 1.6rem; }
     .rosterSlot h5.salary {
-      line-height: 5rem;
-      width: 20px;
-      float: right; }
+      line-height: 20px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #ebebeb;
+      color: #3d3d3d;
+      width: 25px;
+      height: 20px;
+      text-align: center;
+      font-weight: normal;
+      font-size: 1.4rem; }
+  .rosterSlot .position {
+    color: #797470;
+    width: 100%;
+    font: 1.2rem/1.8rem "Open Sans", Arial, sans-serif;
+    margin: 0 0 .3rem 0;
+    text-transform: uppercase; }
+  .rosterSlot i {
+    transition: background-color .2s ease-out;
+    background-color: #ebebeb; }
+    .rosterSlot i:hover {
+      background-color: #e1e1e1; }
+  .rosterSlot .fa-minus-circle, .rosterSlot .fa-plus-circle {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 30px !important;
+    line-height: 70px !important;
+    width: 50px;
+    text-align: center;
+    cursor: pointer;
+    color: #c60c30; }
+  .rosterSlot .fa-plus-circle {
+    color: #2ecc40; }
+  .rosterSlot .playerImg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #797470;
+    margin-right: 10px;
+    float: left; }
 
-.position {
-  color: #797470;
-  text-align: center;
-  width: 50px;
-  font: bold 1.4rem/5rem "Open Sans", Arial, sans-serif;
-  float: left;
-  margin-right: 10px; }
-
-.fa-minus-circle, .fa-plus-circle {
-  float: right;
-  font-size: 30px !important;
-  line-height: 50px !important;
-  cursor: pointer;
-  color: #c60c30; }
-
-.fa-plus-circle {
-  color: #2ecc40; }
-
-.playerImg {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 3px solid #797470;
-  margin-right: 10px;
-  float: left; }
-
-.sal {
-  font-weight: bold; }
-
-.clearRoster {
-  position: absolute;
-  right: 0;
-  bottom: -30px;
-  background-color: white;
-  border: none;
-  font: 600 1.6rem/2.4rem "Open Sans", Arial, sans-serif;
-  padding: 0;
-  cursor: pointer;
-  text-transform: uppercase;
-  color: #797470;
-  letter-spacing: .5px; }
-  .clearRoster:hover {
-    text-decoration: underline; }
-  .clearRoster:focus {
-    outline: none; }
-
-.fixedRoster {
-  position: fixed !important;
-  top: 100px; }
-
-.bottomRoster {
-  position: absolute !important;
-  bottom: 70px;
-  top: auto; }
-
+/*
+-------------------------------------------
+XXI. COWBOYS POSITIONS
+-------------------------------------------
+*/
 #positions {
-  width: calc(100% - 450px);
+  width: calc(100% - 400px);
+  margin-right: 50px;
   float: right;
-  font-family: "Open Sans", Arial, sans-serif;
-  text-align: center; }
+  font-family: "Open Sans", Arial, sans-serif; }
 
 .posBlock {
   width: 100%;
@@ -956,8 +970,9 @@ XXI. COWBOYS ROSTER
     margin: -2.2rem 0 1.8rem;
     background-color: white;
     letter-spacing: -.75px;
-    display: inline-block;
-    padding: 0 2rem; }
+    display: block;
+    padding: 0 2rem;
+    clear: both; }
   .posBlock:last-of-type {
     margin-bottom: 0; }
 
@@ -966,57 +981,69 @@ XXI. COWBOYS ROSTER
   margin-bottom: 2.4rem; }
 
 .posSlot {
-  width: 19%;
+  width: 49%;
+  height: 120px;
   float: left;
-  margin-right: 1.25%;
+  margin: 0 1% 1.2rem 0;
   border: 1px solid #acc0c6;
-  border-radius: 5px;
   padding: 1rem;
-  text-align: center;
-  font-family: "Open Sans", Arial, sans-serif; }
-  .posSlot:last-of-type {
-    margin-right: 0; }
+  font-family: "Open Sans", Arial, sans-serif;
+  position: relative; }
   .posSlot img {
-    width: 85%;
-    margin: 0 auto .3rem;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
-    border: 5px solid #002244; }
+    margin: 0 0 0 60px;
+    border: 5px solid #002244;
+    float: left; }
   .posSlot h4 {
     font-weight: 600;
     letter-spacing: -.5px;
-    margin-bottom: .6rem; }
+    margin-bottom: .6rem;
+    width: calc(100% - 170px);
+    float: right; }
   .posSlot h5 {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin: -20px auto 0;
-    line-height: 40px;
-    font-weight: 600;
+    width: 60px;
+    height: 60px;
+    background-color: #ebebeb;
+    line-height: 60px;
     display: block;
     color: #002244;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid #acc0c6;
     z-index: 100;
-    border: 2px solid #002244;
-    background-color: white; }
+    text-align: center; }
   .posSlot p {
     font-size: 1.2rem;
     line-height: 1.4rem;
     margin-bottom: .6rem !important;
-    font-family: "Open Sans", Arial, sans-serif; }
+    font-family: "Open Sans", Arial, sans-serif;
+    width: calc(100% - 170px);
+    float: right; }
   .posSlot button {
-    background-color: white;
-    border-radius: 5px;
-    border: 2px solid #002244;
+    width: 60px;
+    height: 60px;
+    background-color: #ebebeb;
+    line-height: 50px;
+    display: block;
     color: #002244;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border: none;
     cursor: pointer;
-    font-size: 1.4rem;
+    font-size: 3rem;
     font-weight: bold;
-    line-height: 2.4rem;
-    margin-top: 1.2rem;
-    text-transform: uppercase;
-    transition: all .1s ease-out; }
+    transition: all .1s ease-out;
+    z-index: 99; }
+    .posSlot button .fa-plus-circle {
+      color: #2ecc40; }
+    .posSlot button .fa-minus-circle, .posSlot button .rosterSlot .fa-plus-circle, .rosterSlot .posSlot button .fa-plus-circle {
+      color: #c60c30; }
     .posSlot button:hover {
-      background-color: #002244;
+      background-color: #e1e1e1;
       color: white; }
     .posSlot button:focus {
       outline: 0; }
@@ -1033,10 +1060,3 @@ XXI. COWBOYS ROSTER
     border: 5px solid white; }
   .selected h4, .selected p {
     color: white; }
-  .selected button {
-    background-color: #002244;
-    color: white;
-    border: 2px solid white; }
-    .selected button:hover {
-      background-color: white;
-      color: #002244; }
