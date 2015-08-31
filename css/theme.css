@@ -981,32 +981,34 @@ XXI. COWBOYS POSITIONS
   margin-bottom: 2.4rem; }
 
 .posSlot {
-  width: 49%;
-  height: 120px;
+  width: 48.5%;
+  height: 95px;
   float: left;
-  margin: 0 1% 1.2rem 0;
+  margin: 0 1.5% 1.2rem 0;
   border: 1px solid #acc0c6;
-  padding: 1rem;
+  padding: 10px 10px;
   font-family: "Open Sans", Arial, sans-serif;
   position: relative; }
   .posSlot img {
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
-    margin: 0 0 0 60px;
-    border: 5px solid #002244;
+    margin: 0 0 0 50px;
+    border: 3px solid #002244;
     float: left; }
   .posSlot h4 {
     font-weight: 600;
     letter-spacing: -.5px;
     margin-bottom: .6rem;
-    width: calc(100% - 170px);
-    float: right; }
+    width: calc(100% - 135px);
+    float: right;
+    font-size: 1.8rem;
+    line-height: 2.4rem; }
   .posSlot h5 {
-    width: 60px;
-    height: 60px;
+    width: 47.5px;
+    height: 47.5px;
     background-color: #ebebeb;
-    line-height: 60px;
+    line-height: 47.5px;
     display: block;
     color: #002244;
     position: absolute;
@@ -1020,13 +1022,13 @@ XXI. COWBOYS POSITIONS
     line-height: 1.4rem;
     margin-bottom: .6rem !important;
     font-family: "Open Sans", Arial, sans-serif;
-    width: calc(100% - 170px);
+    width: calc(100% - 135px);
     float: right; }
   .posSlot button {
-    width: 60px;
-    height: 60px;
+    width: 47.5px;
+    height: 47.5px;
     background-color: #ebebeb;
-    line-height: 50px;
+    line-height: 46.5px;
     display: block;
     color: #002244;
     position: absolute;
@@ -1034,7 +1036,7 @@ XXI. COWBOYS POSITIONS
     left: 0;
     border: none;
     cursor: pointer;
-    font-size: 3rem;
+    font-size: 25px;
     font-weight: bold;
     transition: all .1s ease-out;
     z-index: 99; }
@@ -1060,3 +1062,5 @@ XXI. COWBOYS POSITIONS
     border: 5px solid white; }
   .selected h4, .selected p {
     color: white; }
+
+/*# sourceMappingURL=theme.css.map */

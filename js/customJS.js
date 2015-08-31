@@ -167,7 +167,7 @@ $(document).ready(function() {
 		//restore all the roster slots to their defaults
 		$rosterSlot.each(function(k,v) {
 			$(this).find('.slotName').text('Choose a player');
-			$(this).find('.salary').text("");
+			$(this).find('.salary').text("—");
 			$(this).find('img').attr('src', defaultImage);
 			$(this).removeClass('filledSlot');
 			$(this).attr('data-cost', "0");
@@ -180,8 +180,10 @@ $(document).ready(function() {
 
 		//restore all the position slots to defaults
 		$posSlot.each(function(k,v) {
+			if ( $(this).hasClass('selected') ) {
+				$(this).find('.fa').toggleClass('fa-minus-circle').toggleClass('fa-plus-circle');
+			}
 			$(this).removeClass('selected filled unaffordable');
-			$(this).children('button').html('Select');
 		})
 
 		//restore the salary trackers to defaults
@@ -281,10 +283,32 @@ $(document).ready(function() {
 	});
 
 
-	$('.fa-plus-circle').click(function() {
+	/*
+	--------------------------------------------
+	SCROLLING BODY TO POSITION WHEN ROSTER CLICKED
+	--------------------------------------------
+	*/
 
-		// PLACEHOLDER FOR SCROLLING TO POSITIONS
+	// !!!! MAKE SURE TO MAKE THIS CONDITIONAL TO A SIZE THAT ALL THE ROSTERS DISPLAYS (NON-MOBILE)
 
+	// clicking the plus button on the roster
+	$('.rosterSlot .fa').click(function() {
+
+		if ( $(this).hasClass('fa-plus-circle') ) {
+			// getting the position from the rosterSlot clicked
+			var targetPosition = $(this).parent('.rosterSlot').data('position');
+
+			// placeholder id
+			var targetID;
+
+			// setting up the target id based on the targetPositon
+			targetPosition === "qb" ? targetID = "#quarterbacks" : targetPosition === "rb" ? targetID = "#runningbacks" : targetPosition === "wr" ? targetID = "#widereceivers" : targetPosition === "def" ? targetID = "#defenses" : targetID = "#kickers";	
+
+			// scroll the body to the targetID
+			$('html, body').animate({
+		    	scrollTop: $(targetID).offset().top
+		    }, 500);
+		}		
 	})
 
 
