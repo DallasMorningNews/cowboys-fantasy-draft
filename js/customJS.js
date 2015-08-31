@@ -13,13 +13,14 @@ $(document).ready(function() {
 
 
 	//storing path to the default image for player removal from
-	var defaultImage = "images/defaultImage.jpg";
+	var defaultImage = "images/defaultMug.jpg";
 
 
 	//jquery pointers
 
 	var $posSlot = $('.posSlot'),
 		$rosterSlot = $('.rosterSlot');
+		$tweetRoster = $('.tweetRoster');
 
 	var $qb = $('.quarterback'),
 		$rb = $('.runningback'),
@@ -50,6 +51,7 @@ $(document).ready(function() {
 		wrSlot >= 2 ? $wr.addClass('filled') : $wr.removeClass('filled');
 		dSlot >= 1 ? $def.addClass('filled') : $def.removeClass('filled');
 		kSlot >= 1 ? $k.addClass('filled') : $k.removeClass('filled');
+
 	} 
 
 
@@ -73,6 +75,37 @@ $(document).ready(function() {
 				$(this).removeClass('unaffordable');
 			}
 		})
+	}
+
+	/*
+	--------------------------------------------
+	CHECKING TO SEE IF ROSTER IS FINISHED, CAN TWEET
+	--------------------------------------------
+	*/
+
+	var names = [];
+
+	function checkRoster() {
+		var slots = 0;
+
+		names = [];
+
+		$rosterSlot.each(function(k, v) {
+			if ($(this).hasClass('filledSlot') ) {
+				slots ++;
+			}
+		})
+
+		if ( slots === 7) {
+			$tweetRoster.removeClass('noShow');
+			$rosterSlot.each(function(k, v) {
+				var fullName = $(this).find('.slotName').text();
+				splitNames = fullName.split(" ");
+				names.push(splitNames[1]); 
+			})
+		} else {
+			$tweetRoster.addClass('noShow');
+		}
 	}
 
 
@@ -104,6 +137,10 @@ $(document).ready(function() {
 
 				}
 			})
+
+			// check to see if our roster is full
+			checkRoster();
+
 		} else if (action === "sell") {
 			$rosterSlot.each(function(k,v) {
 
@@ -123,8 +160,13 @@ $(document).ready(function() {
 					$(this).attr('data-cost', "0");
 
 					$(this).children('.fa-minus-circle').toggleClass('fa-plus-circle').toggleClass('fa-minus-circle');
+
+
 				}
 			})
+
+			// check to see if our roster is full
+			checkRoster();
 		}
 
 		// check our position slots to see what's still available
@@ -190,10 +232,20 @@ $(document).ready(function() {
 		salRemaining = 18;
 		salTotal = 0;
 
-		$availSal.text(salRemaining);
-		$totalSal.text(salTotal);
+		//restore the position counters to 0
+		qbSlot = 0;
+		rbSlot = 0;
+		wrSlot = 0;
+		dSlot = 0;
+		kSlot = 0;
 
-		// PLACEHOLDER FOR REMOVING SUBMIT BUTTON
+		checkPosSlots();
+
+		$availSal.text("$" + salRemaining);
+		$totalSal.text("$" + salTotal);
+
+		// check to see if our roster is full
+		checkRoster();
 
 	}
 
@@ -205,6 +257,8 @@ $(document).ready(function() {
 	*/
 
 	$('.posSlot button').click(function() {
+
+		var windowWidth = $(window).width();
 
 		// saving the cost and position of the player picked
 		var cost = $(this).parent('.posSlot').data('cost');
@@ -243,6 +297,11 @@ $(document).ready(function() {
 
 			//run the adjustSalary function with the buy option
 			adjustSalary("buy", cost);
+
+			// for small sizes, remove the position block from the screen and allow the body to scroll again
+			$(this).closest('.posBlock').removeClass('viewable');
+			$('body').removeClass('noScroll');
+
 		}
 
 	})
@@ -289,10 +348,10 @@ $(document).ready(function() {
 	--------------------------------------------
 	*/
 
-	// !!!! MAKE SURE TO MAKE THIS CONDITIONAL TO A SIZE THAT ALL THE ROSTERS DISPLAYS (NON-MOBILE)
-
 	// clicking the plus button on the roster
 	$('.rosterSlot .fa').click(function() {
+
+		var windowWidth = $(window).width();
 
 		if ( $(this).hasClass('fa-plus-circle') ) {
 			// getting the position from the rosterSlot clicked
@@ -304,21 +363,51 @@ $(document).ready(function() {
 			// setting up the target id based on the targetPositon
 			targetPosition === "qb" ? targetID = "#quarterbacks" : targetPosition === "rb" ? targetID = "#runningbacks" : targetPosition === "wr" ? targetID = "#widereceivers" : targetPosition === "def" ? targetID = "#defenses" : targetID = "#kickers";	
 
-			// scroll the body to the targetID
-			$('html, body').animate({
-		    	scrollTop: $(targetID).offset().top
-		    }, 500);
+			// if the window is greater than 650, we scroll to that position. If it's less, we display that position and mark the body as unscrollable 
+			if (windowWidth > 650) {
+				// scroll the body to the targetID
+				$('html, body').animate({
+			    	scrollTop: $(targetID).offset().top
+			    }, 500);
+			} else {
+				$(targetID).addClass('viewable');
+				$('body').addClass('noScroll');
+			}
 		}		
 	})
 
+	/*
+	--------------------------------------------
+	HIDING THE POSITION SLOTS ON SMALL SCREENS WITH ROSTER RETURN BUTTON
+	--------------------------------------------
+	*/
+
+	var $rosterReturn = $('.rosterReturn');
+
+	$rosterReturn.click(function() {
+		$(this).parent('.posBlock').removeClass('viewable');
+		$('body').removeClass('noScroll');
+	})
+
+
+
+
+	/*
+	--------------------------------------------
+	CLEARING THE ROSTER
+	--------------------------------------------
+	*/
 
 	$clearButton.click(function() {
 		clearRoster();
 	})
 
 
+	// initial run of affordables 
 	affordables(salRemaining);
 
+
+	// pinning the roster as you scroll
 
 	$(window).scroll(function() {
 
@@ -329,13 +418,13 @@ $(document).ready(function() {
 			rosterHeight = $roster.height();
 
 		// on wide displays, we're pinning the roster with a fixed position as we scroll through the game
-		if (y + 100 >= cowTop) {
+		if (y + 50 >= cowTop) {
 			$roster.addClass('fixedRoster');
 		} else {
 			$roster.removeClass('fixedRoster');
 		}
 
-		if (y + 130 + rosterHeight >= cowTop + cowHeight) {
+		if (y + 50 + rosterHeight >= cowTop + cowHeight) {
 			$roster.addClass('bottomRoster');
 		} else {
 			$roster.removeClass('bottomRoster');
@@ -343,6 +432,41 @@ $(document).ready(function() {
 
 	})
 
+
+
+	/*
+	--------------------------------------------
+	TWEATING THE ROSTER
+	--------------------------------------------
+	*/
+
+
+	$tweetRoster.on("click", function(){
+
+		// setting a string that will hold the last names
+		var allNames = "";
+
+		// populating that string
+		for (i = 0; i < names.length; i++) {
+			allNames += (names[i] + ", ");
+		}
+
+
+		var maxLength = 36 // maximum number of characters to extract
+
+		// trimming the list of names to a manageable tweet length 
+		var trimmedText = allNames.substr(0, maxLength);
+		trimmedText = trimmedText.substr(0, Math.min(trimmedText.length, trimmedText.lastIndexOf(" ")))
+		trimmedText = encodeURIComponent(trimmedText); 
+
+
+		// building the tweet and tweeting
+		var shareURL = "&url="+encodeURIComponent(window.location.href),
+			shareText = encodeURIComponent("My fantasy #cowboys team includes: "),
+			shareLink = "https://twitter.com/intent/tweet?text="+ shareText + trimmedText + shareURL + "&via=dallasnews";
+		window.open(shareLink, '_blank');
+
+	});
 
 
 

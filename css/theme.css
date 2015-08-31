@@ -53,6 +53,12 @@ body {
   z-index: 0;
   position: relative; }
 
+.noScroll {
+  overflow: auto; }
+  @media (max-width: 650px) {
+    .noScroll {
+      overflow: hidden; } }
+
 ol, ul {
   list-style: none; }
 
@@ -853,13 +859,35 @@ XXI. COWBOYS ROSTER
   font-family: "Open Sans", Arial, sans-serif;
   left: 0;
   top: 0; }
+  #roster .rosterLabel {
+    padding-left: 10px;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    line-height: 2.8rem; }
   #roster.fixedRoster {
     position: fixed !important;
-    top: 100px; }
+    top: 50px; }
   #roster.bottomRoster {
     position: absolute !important;
-    bottom: 70px;
+    bottom: 0px;
     top: auto !important; }
+  @media (max-width: 650px) {
+    #roster {
+      width: 100%;
+      max-width: none;
+      position: relative;
+      top: auto;
+      left: auto;
+      padding: 0 20px; }
+      #roster .rosterLabel {
+        padding-left: 0; }
+      #roster.fixedRoster {
+        position: relative !important;
+        top: auto; }
+      #roster.bottomRoster {
+        position: relative !important;
+        bottom: auto;
+        top: auto; } }
 
 .rosterSlot {
   width: 100%;
@@ -868,6 +896,8 @@ XXI. COWBOYS ROSTER
   border-top: 1px solid #acc0c6;
   border-right: 1px solid #acc0c6;
   height: 70px; }
+  .rosterSlot.filledSlot {
+    background-color: whitesmoke; }
   .rosterSlot:last-of-type {
     border-right: none;
     padding: 0 0;
@@ -893,7 +923,8 @@ XXI. COWBOYS ROSTER
       cursor: pointer; }
       .rosterSlot:last-of-type .clearRoster i {
         color: #c60c30;
-        background-color: initial; }
+        background-color: initial;
+        border-left: none; }
       .rosterSlot:last-of-type .clearRoster:hover {
         background-color: #e1e1e1; }
   .rosterSlot .playerInfo {
@@ -916,16 +947,22 @@ XXI. COWBOYS ROSTER
       height: 20px;
       text-align: center;
       font-weight: normal;
-      font-size: 1.4rem; }
+      font-size: 1.4rem;
+      border-right: 1px solid white;
+      border-bottom: 1px solid white; }
   .rosterSlot .position {
     color: #797470;
     width: 100%;
     font: 1.2rem/1.8rem "Open Sans", Arial, sans-serif;
     margin: 0 0 .3rem 0;
     text-transform: uppercase; }
+    @media (max-width: 400px) {
+      .rosterSlot .position {
+        font-size: 1.1rem; } }
   .rosterSlot i {
     transition: background-color .2s ease-out;
-    background-color: #ebebeb; }
+    background-color: #ebebeb;
+    border-left: 1px solid white; }
     .rosterSlot i:hover {
       background-color: #e1e1e1; }
   .rosterSlot .fa-minus-circle, .rosterSlot .fa-plus-circle {
@@ -947,6 +984,9 @@ XXI. COWBOYS ROSTER
     border: 3px solid #797470;
     margin-right: 10px;
     float: left; }
+  @media (max-width: 650px) {
+    .rosterSlot {
+      border-left: 1px solid #acc0c6; } }
 
 /*
 -------------------------------------------
@@ -958,23 +998,51 @@ XXI. COWBOYS POSITIONS
   margin-right: 50px;
   float: right;
   font-family: "Open Sans", Arial, sans-serif; }
+  @media (max-width: 800px) {
+    #positions {
+      width: calc(100% - 350px);
+      margin-right: 25px; } }
+  @media (max-width: 650px) {
+    #positions {
+      width: 100%;
+      margin-right: 0;
+      float: none; } }
 
 .posBlock {
   width: 100%;
-  border-top: 1px solid #002244;
-  margin-bottom: 14.4rem; }
+  margin-bottom: 6rem;
+  padding-bottom: 2.4rem;
+  border-bottom: 1px solid #ebebeb; }
   .posBlock h3 {
+    font: 3rem/3rem "Open Sans", Arial, sans-serif;
     color: #002244;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    margin: -2.2rem 0 1.8rem;
+    margin: 0rem 0 .6rem;
     background-color: white;
     letter-spacing: -.75px;
     display: block;
-    padding: 0 2rem;
     clear: both; }
+  .posBlock p {
+    font: 1.4rem/1.8rem "Open Sans", Arial, sans-serif; }
   .posBlock:last-of-type {
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none; }
+  @media (max-width: 650px) {
+    .posBlock {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: scroll;
+      background-color: white;
+      padding: 20px;
+      margin-left: 100%;
+      transition: all .1s ease-out; }
+      .posBlock.viewable {
+        margin-left: 0;
+        z-index: 1000; } }
 
 .row {
   clear: left;
@@ -1049,6 +1117,21 @@ XXI. COWBOYS POSITIONS
       color: white; }
     .posSlot button:focus {
       outline: 0; }
+  @media (max-width: 1025px) {
+    .posSlot {
+      width: 100%;
+      float: none;
+      margin-right: 0; }
+      .posSlot h4 {
+        font-size: 2.4rem;
+        line-height: 3rem; } }
+  @media (max-width: 800px) {
+    .posSlot {
+      height: auto;
+      min-height: 95px; }
+      .posSlot h4 {
+        font-size: 1.6rem;
+        line-height: 1.8rem; } }
 
 .unaffordable, .filled {
   opacity: .3;
@@ -1063,4 +1146,51 @@ XXI. COWBOYS POSITIONS
   .selected h4, .selected p {
     color: white; }
 
-/*# sourceMappingURL=theme.css.map */
+.rosterReturn {
+  display: none; }
+  @media (max-width: 650px) {
+    .rosterReturn {
+      display: inline-block;
+      background-color: #ebebeb;
+      color: white;
+      border: none;
+      font: 1.4rem/2.4rem "Open Sans", Arial, sans-serif;
+      text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      color: #3d3d3d;
+      cursor: pointer;
+      transition: all .1s ease-out; }
+      .rosterReturn:hover {
+        background-color: #002244;
+        color: white; }
+      .rosterReturn:focus {
+        outline: none; } }
+
+.tweetRoster {
+  display: inline-block;
+  background-color: #ebebeb;
+  color: white;
+  border: none;
+  font: 1.4rem/2.4rem "Open Sans", Arial, sans-serif;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  color: #3d3d3d;
+  cursor: pointer;
+  transition: all .1s ease-out;
+  float: right;
+  border-radius: 3px; }
+  .tweetRoster:focus {
+    outline: none; }
+  .tweetRoster:hover {
+    background-color: #002244;
+    color: white; }
+
+.largeTweet {
+  float: none;
+  width: 80%;
+  margin: 2.4rem auto 0;
+  display: block;
+  line-height: 3.6rem; }
+
+.noShow {
+  display: none; }

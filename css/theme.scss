@@ -45,6 +45,11 @@ $grey225: #e1e1e1;
 $sansSerif: 'Open Sans', Arial, sans-serif;
 $serif: Merriweather, Georgia, serif;
 
+$bp1025: "(max-width: 1025px)";
+$bp800: "(max-width: 800px)";
+$bp650: "(max-width: 650px)";
+$bp400: "(max-width: 400px)";
+
 
 
 /*
@@ -70,6 +75,12 @@ body {
   line-height: 1;
   z-index: 0;
   position: relative; 
+}
+.noScroll {
+  overflow:auto;
+  @media #{$bp650} {
+    overflow: hidden;
+  }
 }
 ol, ul {
   list-style: none; 
@@ -963,15 +974,40 @@ XXI. COWBOYS ROSTER
   font-family: $sansSerif;
   left: 0;
   top: 0;
+  .rosterLabel {
+    padding-left: 10px;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    line-height: 2.8rem;
+  }
   &.fixedRoster {
     position: fixed !important;
-    top: 100px;
+    top: 50px;
   }
-
   &.bottomRoster {
     position: absolute !important;
-    bottom: 70px;
+    bottom: 0px;
     top: auto !important;
+  }
+  @media #{$bp650} {
+    width: 100%;
+    max-width: none;
+    position: relative;
+    top: auto;
+    left: auto;
+    padding: 0 20px;
+    .rosterLabel {
+      padding-left: 0;
+    }
+    &.fixedRoster {
+      position: relative !important;
+      top: auto;
+    }
+    &.bottomRoster {
+      position: relative !important;
+      bottom: auto;
+      top: auto;
+    }
   }
 }
 .rosterSlot {
@@ -981,6 +1017,9 @@ XXI. COWBOYS ROSTER
   border-top: 1px solid $cowboysSilver;
   border-right: 1px solid $cowboysSilver;
   height: 70px;
+  &.filledSlot {
+    background-color: rgb(245,245,245);
+  }
   &:last-of-type {
     border-right: none;
     padding: 0 0;
@@ -1009,6 +1048,7 @@ XXI. COWBOYS ROSTER
       i {
         color: $actionRed;
         background-color: initial;
+        border-left: none;
       }
       &:hover {
         background-color: $grey225;
@@ -1037,6 +1077,8 @@ XXI. COWBOYS ROSTER
       text-align: center;
       font-weight: normal;
       font-size: 1.4rem;
+      border-right: 1px solid white;
+      border-bottom: 1px solid white;
     }
   }
   .position {
@@ -1045,10 +1087,14 @@ XXI. COWBOYS ROSTER
     font: 1.2rem/1.8rem $sansSerif;
     margin: 0 0 .3rem 0;
     text-transform: uppercase;
+    @media #{$bp400} {
+      font-size: 1.1rem;
+    }
   }
   i {
     transition: background-color .2s ease-out;
     background-color: $grey235;
+    border-left: 1px solid white;
     &:hover {
       background-color: $grey225;
     }
@@ -1076,6 +1122,9 @@ XXI. COWBOYS ROSTER
     margin-right: 10px;
     float: left;
   }
+  @media #{$bp650} {
+    border-left: 1px solid $cowboysSilver;
+  }
 }
 
 
@@ -1091,24 +1140,54 @@ XXI. COWBOYS POSITIONS
   margin-right: 50px;
   float: right;
   font-family: $sansSerif;
+  @media #{$bp800} {
+    width: calc(100% - 350px);
+    margin-right: 25px;
+  }
+  @media #{$bp650} {
+    width: 100%;
+    margin-right: 0;
+    float: none;
+  }
 }
 .posBlock {
   width: 100%;
-  border-top: 1px solid $cowboysNavy;
-  margin-bottom: 14.4rem;
+  margin-bottom: 6rem;
+  padding-bottom: 2.4rem;
+  border-bottom: 1px solid $grey235;
   h3 {
+    font: 3rem/3rem $sansSerif;
     color: $cowboysNavy;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
-    margin: -2.2rem 0 1.8rem;
+    margin: 0rem 0 .6rem;
     background-color: white;
     letter-spacing: -.75px;
     display: block;
-    padding: 0 2rem;
     clear: both;
+  }
+  p {
+    font: 1.4rem/1.8rem $sansSerif;
   }
   &:last-of-type {
     margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+  @media #{$bp650} {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    background-color: white;
+    padding: 20px;
+    margin-left: 100%;
+    transition: all .1s ease-out;
+    &.viewable {
+      margin-left: 0;
+      z-index: 1000;
+    }
   }
 }
 .row {
@@ -1194,6 +1273,23 @@ XXI. COWBOYS POSITIONS
       outline: 0;
     }
   }
+  @media #{$bp1025} {
+    width: 100%;
+    float: none;
+    margin-right: 0;
+    h4 {
+      font-size: 2.4rem;
+      line-height: 3rem;
+    }
+  }
+  @media #{$bp800} {
+    height: auto;
+    min-height: 95px;
+    h4 {
+      font-size: 1.6rem;
+      line-height: 1.8rem;
+    }
+  }
 }
 
 .unaffordable, .filled {
@@ -1213,6 +1309,64 @@ XXI. COWBOYS POSITIONS
   }
 }
 
+.rosterReturn {
+  display: none;
+  @media #{$bp650} {
+    display: inline-block;
+    background-color: $grey235;
+    color: white;
+    border: none;
+    font: 1.4rem/2.4rem $sansSerif;
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    color: $warmBlack;
+    cursor: pointer;
+    transition: all .1s ease-out;
+    &:hover {
+      background-color: $cowboysNavy;
+      color: white;
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.tweetRoster {
+  display: inline-block;
+  background-color: $grey235;
+  color: white;
+  border: none;
+  font: 1.4rem/2.4rem $sansSerif;
+  text-transform: uppercase;
+  margin-bottom: 1.8rem;
+  color: $warmBlack;
+  cursor: pointer;
+  transition: all .1s ease-out;
+  float: right;
+  border-radius: 3px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    background-color: $cowboysNavy;
+    color: white;
+  }
+}
+
+.largeTweet {
+  float: none;
+  width: 80%;
+  margin: 2.4rem auto 0;
+  display: block;
+  line-height: 3.6rem;
+
+
+}
+
+.noShow {
+  display: none;
+}
 
 
 

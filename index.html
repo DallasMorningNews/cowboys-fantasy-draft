@@ -169,9 +169,11 @@
 
 		<section id="cowboysGame" class="clearFix">
 
-			<div id="roster">
+			<div id="roster" class="clearFix">
+				<button class="tweetRoster noShow"><i class="fa fa-twitter"></i> Tweet</button>
+				<h5 class="rosterLabel">Your roster</h5>
 				<div class="rosterSlot clearFix" data-position="qb" data-cost="0">
-					<img class="playerImg" src="images/defaultImage.jpg" alt="defaultImage" />
+					<img class="playerImg" src="images/defaultMug.jpg" alt="Choose a player" />
 					<div class="playerInfo">
 						<p class="position">Quarteback</p>
 						<h5 class="slotName">Choose a player</h5>
@@ -180,7 +182,7 @@
 					<i class="fa fa-plus-circle"></i>
 				</div>
 				<div class="rosterSlot clearFix" data-position="rb" data-cost="0">
-					<img class="playerImg" src="images/defaultImage.jpg" alt="defaultImage" />
+					<img class="playerImg" src="images/defaultMug.jpg" alt="Choose a player" />
 					<div class="playerInfo">
 						<p class="position">Running back</p>
 						<h5 class="slotName">Choose a player</h5>
@@ -189,7 +191,7 @@
 					<i class="fa fa-plus-circle"></i>
 				</div>
 				<div class="rosterSlot clearFix" data-position="rb" data-cost="0">
-					<img class="playerImg" src="images/defaultImage.jpg" alt="defaultImage" />
+					<img class="playerImg" src="images/defaultMug.jpg" alt="Choose a player" />
 					<div class="playerInfo">
 						<p class="position">Running back</p>
 						<h5 class="slotName">Choose a player</h5>
@@ -198,7 +200,7 @@
 					<i class="fa fa-plus-circle"></i>
 				</div>
 				<div class="rosterSlot clearFix" data-position="wr" data-cost="0">
-					<img class="playerImg" src="images/defaultImage.jpg" alt="defaultImage" />
+					<img class="playerImg" src="images/defaultMug.jpg" alt="Choose a player" />
 					<div class="playerInfo">
 						<p class="position">Receiver/Tight End</p>
 						<h5 class="slotName">Choose a player</h5>
@@ -207,7 +209,7 @@
 					<i class="fa fa-plus-circle"></i>
 				</div>
 				<div class="rosterSlot clearFix" data-position="wr" data-cost="0">
-					<img class="playerImg" src="images/defaultImage.jpg" alt="defaultImage" />
+					<img class="playerImg" src="images/defaultMug.jpg" alt="Choose a player" />
 					<div class="playerInfo">
 						<p class="position">Receiver/Tight End</p>
 						<h5 class="slotName">Choose a player</h5>
@@ -216,7 +218,7 @@
 					<i class="fa fa-plus-circle"></i>
 				</div>
 				<div class="rosterSlot clearFix" data-position="def" data-cost="0">
-					<img class="playerImg" src="images/defaultImage.jpg" alt="defaultImage" />
+					<img class="playerImg" src="images/defaultMug.jpg" alt="Choose a player" />
 					<div class="playerInfo">
 						<p class="position">Defense</p>
 						<h5 class="slotName">Choose a player</h5>
@@ -225,7 +227,7 @@
 					<i class="fa fa-plus-circle"></i>
 				</div>
 				<div class="rosterSlot clearFix" data-position="k" data-cost="0">
-					<img class="playerImg" src="images/defaultImage.jpg" alt="defaultImage" />
+					<img class="playerImg" src="images/defaultMug.jpg" alt="Choose a player" />
 					<div class="playerInfo">
 						<p class="position">Kicker</p>
 						<h5 class="slotName">Choose a player</h5>
@@ -239,6 +241,9 @@
 					<h6 class="clearRoster">Clear<span><i class="fa fa-times-circle"></i></span></h6>
 				</div>
 
+				<button class="tweetRoster noShow largeTweet"><i class="fa fa-twitter"></i> Tweet Roster</button>
+
+
 			</div>
 
 
@@ -246,6 +251,8 @@
 
 					<div class="posBlock clearFix" id="quarterbacks">
 						<h3>Quarterbacks</h3>
+						<p>The quarterback for the Dallas Cowboys has always held a sort of pop-culture status. Who will you pick to lead your team? Aikman and Staubach have Super Bowls rings but are not cheap. Romo, who is more affordable, holds the team record for touchdown passes.</p> 
+						<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
 							<div class="posSlot quarterback" data-cost="5"  data-position="qb">
 								<img src="images/aikman.jpg" alt="Troy Aikman" />
 								<h5>$5</h5>
@@ -282,11 +289,15 @@
 								<button><i class="fa fa-plus-circle"></i></button>
 							</div>
 
+							<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
+
 					</div> 
 
 
 					<div class="posBlock clearFix" id="runningbacks">
 						<h3>Running backs</h3>
+						<p>Plenty of talent to pick from in this group. Emmitt Smith is the all-time leading rusher in the NFL, and DeMarco Murray just set a team record for yards from scrimmage. Marion Barber racked up 47 touchdowns in his six seasons. Remember, you've got to pick two to fill out your roster</p>
+						<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
 							<div class="posSlot runningback" data-cost="5"  data-position="rb">
 								<img src="images/smith.jpg" alt="Emmitt Smith" />
 								<h5>$5</h5>
@@ -358,11 +369,14 @@
 								<p><strong>1989-98: </strong>753 rushing yds, 8 TDs</p>
 								<button><i class="fa fa-plus-circle"></i></button>
 							</div>
+						<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
 
 					</div> 
 
 					<div class="posBlock clearFix" id="widereceivers">
-						<h3>Wide receivers/Tight ends</h3>
+						<h3>Wide receivers and tight ends</h3>
+						<p>Two No. 88’s, Michael Irvin and Dez Bryant, top our list of receivers for you to pick from, and it would be hard to argue with their combined 121 combined touchdown receptions. Bob Hayes, an affordable middle-of-the-road option, holds the team record with 71 touchdown catches. Like running backs, you have to pick two.</p>
+						<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
 							<div class="posSlot widereceiver" data-cost="5"  data-position="wr">
 								<img src="images/irvin.jpg" alt="Michael Irvin" />
 								<h5>$5</h5>
@@ -434,12 +448,14 @@
 								<p><strong>1990-95: </strong>339 rec, 3,576 yds, 22 TDs</p>
 								<button><i class="fa fa-plus-circle"></i></button>
 							</div>
+						<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
 
 					</div> 
 
 					<div class="posBlock clearFix" id="defenses">
 						<h3>Defenses</h3>
-
+						<p>Three of our five defenses won Super Bowls, 1971, 1977 and 1992. The 1968 squad was no slouch either, holding opponents to 13.3 points per game while forcing 41 turnovers.</p>
+						<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
 							<div class="posSlot defense" data-cost="5"  data-position="def">
 								<img src="images/rwhite.jpg" alt="Randy White" />
 								<h5>$5</h5>
@@ -475,12 +491,14 @@
 								<p><strong>Featuring Bob Lilly: </strong>15.9 pts allowed/gm, 51 TOs</p>
 								<button><i class="fa fa-plus-circle"></i></button>
 							</div>
+							<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
 
 					</div> 
 
 					<div class="posBlock clearFix" id="kickers">
 						<h3>Kickers</h3>
-
+						<p>We’re going to do you a solid here. Kickers are free, so, go ahead and take Dan Bailey and smile. Unless, of course, you're related to Billy Cundiff or Chris Boniol.</p>
+						<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
 							<div class="posSlot kicker" data-cost="0"  data-position="k">
 								<img src="images/bailey.jpg" alt="Dan Bailey" />
 								<h5>$0</h5>
@@ -502,6 +520,7 @@
 								<p><strong>1994-96: </strong>81/93 FG, 2/6 50+ yds </p>
 								<button><i class="fa fa-plus-circle"></i></button>
 							</div>
+						<button class="rosterReturn"><i class="fa fa-chevron-left"></i> Return to roster</button>
 					</div> 
 
 				</div>
