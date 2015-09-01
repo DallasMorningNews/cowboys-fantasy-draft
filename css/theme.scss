@@ -82,6 +82,9 @@ body {
     overflow: hidden;
   }
 }
+.lockScroll {
+  overflow: hidden;
+}
 ol, ul {
   list-style: none; 
 }
@@ -1332,7 +1335,7 @@ XXI. COWBOYS POSITIONS
   }
 }
 
-.tweetRoster {
+.submitRoster {
   display: inline-block;
   background-color: $grey235;
   color: white;
@@ -1354,20 +1357,109 @@ XXI. COWBOYS POSITIONS
   }
 }
 
-.largeTweet {
+.largeSubmit {
   float: none;
   width: 80%;
   margin: 2.4rem auto 0;
   display: block;
   line-height: 3.6rem;
-
-
 }
 
 .noShow {
   display: none;
 }
 
+/*
+-------------------------------------------
+XXI. RESULTS MODAL
+-------------------------------------------
+*/
+
+.resultsModal {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(250,250,250, .95);
+  z-index: 2000;
+  h3, p {
+    text-align: center;
+  }
+  h3 {
+    text-transform: uppercase;
+    font: 600 2.4rem/3rem $sansSerif;
+    color: $cowboysNavy;
+    border-bottom: 1px solid $warmBlack;
+  }
+  p {
+    font: 1.4rem/1.8rem $sansSerif;
+  }
+  button {
+    background-color: $cowboysNavy;
+    color: $warmBlack;
+    font: 1.6rem/3rem $sansSerif;
+    text-align: center;
+    width: 30%;
+    float: left;
+    margin: 2.4rem 5% 0 0;
+    transition: all .2s ease-out;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    .fa-twitter {
+      color: $warmBlack;
+    }
+    &:hover {
+      background-color: $cowboysNavy;
+      color: white;
+    }
+    &:focus {
+      outline: none;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+}
+}
+
+.finalRoster {
+  width: 100%;
+  max-width: 700px;
+  margin: 3rem auto 0;
+}
+
+.resultsSlot {
+  float: left;
+  width: 91.4px;
+  padding: 0 5px;
+  margin-right: 10px;
+  &:last-of-type {
+    margin-right: 0;
+  }
+  img {
+    width: 85%;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: block;
+    border: 3px solid $cowboysNavy;
+  }
+  h5, h4 {
+    text-align: center;
+    letter-spacing: -.5px;
+  }
+  h4 {
+    font: 400 1.8rem/ 2.4rem $sansSerif;
+    color: $warmBlack;
+  }
+  h5 {
+    font: 600 1.6rem/1.8rem $sansSerif;
+    color: $cowboysNavy;
+    height: 3.6rem;
+  }
+}
 
 
 

@@ -59,6 +59,9 @@ body {
     .noScroll {
       overflow: hidden; } }
 
+.lockScroll {
+  overflow: hidden; }
+
 ol, ul {
   list-style: none; }
 
@@ -1166,7 +1169,7 @@ XXI. COWBOYS POSITIONS
       .rosterReturn:focus {
         outline: none; } }
 
-.tweetRoster {
+.submitRoster {
   display: inline-block;
   background-color: #ebebeb;
   color: white;
@@ -1179,13 +1182,13 @@ XXI. COWBOYS POSITIONS
   transition: all .1s ease-out;
   float: right;
   border-radius: 3px; }
-  .tweetRoster:focus {
+  .submitRoster:focus {
     outline: none; }
-  .tweetRoster:hover {
+  .submitRoster:hover {
     background-color: #002244;
     color: white; }
 
-.largeTweet {
+.largeSubmit {
   float: none;
   width: 80%;
   margin: 2.4rem auto 0;
@@ -1194,3 +1197,80 @@ XXI. COWBOYS POSITIONS
 
 .noShow {
   display: none; }
+
+/*
+-------------------------------------------
+XXI. RESULTS MODAL
+-------------------------------------------
+*/
+.resultsModal {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(250, 250, 250, 0.95);
+  z-index: 2000; }
+  .resultsModal h3, .resultsModal p {
+    text-align: center; }
+  .resultsModal h3 {
+    text-transform: uppercase;
+    font: 600 2.4rem/3rem "Open Sans", Arial, sans-serif;
+    color: #002244;
+    border-bottom: 1px solid #3d3d3d; }
+  .resultsModal p {
+    font: 1.4rem/1.8rem "Open Sans", Arial, sans-serif; }
+  .resultsModal button {
+    background-color: #002244;
+    color: #3d3d3d;
+    font: 1.6rem/3rem "Open Sans", Arial, sans-serif;
+    text-align: center;
+    width: 30%;
+    float: left;
+    margin: 2.4rem 5% 0 0;
+    transition: all .2s ease-out;
+    border: none;
+    text-transform: uppercase;
+    cursor: pointer; }
+    .resultsModal button .fa-twitter {
+      color: #3d3d3d; }
+    .resultsModal button:hover {
+      background-color: #002244;
+      color: white; }
+    .resultsModal button:focus {
+      outline: none; }
+    .resultsModal button:last-of-type {
+      margin-right: 0; }
+
+.finalRoster {
+  width: 100%;
+  max-width: 700px;
+  margin: 3rem auto 0; }
+
+.resultsSlot {
+  float: left;
+  width: 91.4px;
+  padding: 0 5px;
+  margin-right: 10px; }
+  .resultsSlot:last-of-type {
+    margin-right: 0; }
+  .resultsSlot img {
+    width: 85%;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: block;
+    border: 3px solid #002244; }
+  .resultsSlot h5, .resultsSlot h4 {
+    text-align: center;
+    letter-spacing: -.5px; }
+  .resultsSlot h4 {
+    font: 400 1.8rem/2.4rem "Open Sans", Arial, sans-serif;
+    color: #3d3d3d; }
+  .resultsSlot h5 {
+    font: 600 1.6rem/1.8rem "Open Sans", Arial, sans-serif;
+    color: #002244;
+    height: 3.6rem; }
+
+/*# sourceMappingURL=theme.css.map */
