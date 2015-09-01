@@ -19,8 +19,12 @@ $(document).ready(function() {
 	//jquery pointers
 
 	var $posSlot = $('.posSlot'),
-		$rosterSlot = $('.rosterSlot');
-		$tweetRoster = $('.tweetRoster');
+		$rosterSlot = $('.rosterSlot'),
+		$tweetRoster = $('.tweetRoster'),
+		$submitRoster = $('.submitRoster'),
+		$resultsModal = $('.resultsModal'),
+		$resultsSlot = $('.resultsSlot'),
+		$backGame = $('.backToGame');
 
 	var $qb = $('.quarterback'),
 		$rb = $('.runningback'),
@@ -97,14 +101,14 @@ $(document).ready(function() {
 		})
 
 		if ( slots === 7) {
-			$tweetRoster.removeClass('noShow');
+			$submitRoster.removeClass('noShow');
 			$rosterSlot.each(function(k, v) {
 				var fullName = $(this).find('.slotName').text();
 				splitNames = fullName.split(" ");
 				names.push(splitNames[1]); 
 			})
 		} else {
-			$tweetRoster.addClass('noShow');
+			$submitRoster.addClass('noShow');
 		}
 	}
 
@@ -433,10 +437,44 @@ $(document).ready(function() {
 	})
 
 
+	/*
+	--------------------------------------------
+	SUBMITTING THE ROSTER
+	--------------------------------------------
+	*/
+
+
+
+
+	$submitRoster.on("click", function() {
+
+		var players = [];
+		var images = [];
+
+		// when submit button is clicked, populate the player and images array with player names and image paths
+		$('.filledSlot').each(function() {
+			players.push( $(this).find('.slotName').text() );
+			images.push( $(this).children('.playerImg').attr('src') );
+		})
+
+		//resultsModal is displayed and body scroll is deactivated
+		$resultsModal.removeClass('noShow');
+		$('body').addClass('lockScroll');
+
+		
+		// resultsModal roster is populated with the players roster
+		$resultsSlot.each(function(k, v) {
+			$(this).children('img').attr('src', images[k]);
+			$(this).children('h5').text(players[k]);
+		})
+
+
+	})
+
 
 	/*
 	--------------------------------------------
-	TWEATING THE ROSTER
+	TWEETING THE ROSTER
 	--------------------------------------------
 	*/
 
@@ -467,6 +505,19 @@ $(document).ready(function() {
 		window.open(shareLink, '_blank');
 
 	});
+
+
+	/*
+	--------------------------------------------
+	RETURNING TO GAME FROM MODAL
+	--------------------------------------------
+	*/
+
+	// clicking the back to game button removes the modal and resets the body's scrolling
+	$backGame.click(function() {
+		$resultsModal.addClass('noShow');
+		$('body').removeClass('lockScroll');
+	})
 
 
 
