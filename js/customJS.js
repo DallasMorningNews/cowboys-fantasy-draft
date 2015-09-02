@@ -483,6 +483,22 @@ $(document).ready(function() {
             var resultsObj = JSON.parse(returnedData);
             console.log(resultsObj);
 
+            var totalRosters = resultsObj[0].count;
+
+            $resultsSlot.each(function() {
+                var thisPlayer = $(this).children('.resultName').text();
+                var countPick = 0;
+
+                for (i =0; i < resultsObj.length; i ++) {
+                    if ( resultsObj[i].pick === thisPlayer) {
+                        countPick = parseInt(resultsObj[i].count);
+                    }
+                }
+
+                var pct = (countPick / totalRosters * 100).toFixed(0);
+                $(this).children('.resultPct').text( pct + "%");
+            })
+
             //log each pick with each count
             $.each(resultsObj, function () {
                 console.log(this.pick + ": "+this.count);
