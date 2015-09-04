@@ -458,6 +458,7 @@ $(document).ready(function() {
         //resultsModal is displayed and body scroll is deactivated
         $resultsModal.removeClass('noShow');
         $('body').addClass('lockScroll');
+        $('#cowboysGame').addClass('submitOverlay');
 
 
         // resultsModal roster is populated with the players roster
@@ -570,6 +571,7 @@ $(document).ready(function() {
     $backGame.click(function() {
         $resultsModal.addClass('noShow');
         $('body').removeClass('lockScroll');
+        $('#cowboysGame').removeClass('submitOverlay');
     })
 
 
