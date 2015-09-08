@@ -184,8 +184,24 @@ IV. CONTENT HEADER
   position: relative; }
 
 #contentHeader img {
-  width: 100%;
-  margin-bottom: .3rem; }
+  width: 100%; }
+  #contentHeader img.ledeCut {
+    position: absolute;
+    width: 35%;
+    bottom: 1px;
+    max-width: 500px; }
+
+#staubach {
+  right: 35%;
+  z-index: 500; }
+
+#smith {
+  right: 22%;
+  z-index: 400; }
+
+#dez {
+  right: 5%;
+  z-index: 300; }
 
 #contentHeader .cutline {
   padding: 0 2rem;
@@ -217,14 +233,21 @@ VI. STORY HEAD, BYLINES AND INTRO
 */
 #storyHead {
   margin: 4.8rem auto 2.4rem auto;
-  text-align: center;
-  color: #3d3d3d; }
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  z-index: 1000; }
 
 #storyHead h1 {
-  font-size: 6.4rem;
+  font-size: 9.6rem;
   letter-spacing: -.2rem;
-  line-height: 7.6rem;
-  margin-bottom: 1.8rem; }
+  line-height: 10.2rem;
+  margin-bottom: 1.8rem;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 2px 2px 0px #acc0c6, 2px 0px 0px #acc0c6, 0px 2px 0px #acc0c6;
+  letter-spacing: -1px; }
 
 #storyHead h2 {
   font-size: 3.2rem;
@@ -234,8 +257,23 @@ VI. STORY HEAD, BYLINES AND INTRO
   font-family: 'Open Sans', Arial, sans-serif;
   font-size: 1.8rem;
   line-height: 3rem;
-  margin-bottom: 1.8rem;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+  color: #3d3d3d;
+  -webkit-transform: skew(12deg);
+  -moz-transform: skew(12deg);
+  -o-transform: skew(12deg);
+  transform: skew(12deg);
+  display: inline-block;
+  padding: 0 10px;
+  margin-bottom: 0; }
+
+.polyText {
+  background-color: white;
+  -webkit-transform: skew(-12deg);
+  -moz-transform: skew(-12deg);
+  -o-transform: skew(-12deg);
+  transform: skew(-12deg);
+  display: inline-block; }
 
 .bylineBlock {
   text-align: center;
@@ -853,7 +891,8 @@ XXI. COWBOYS ROSTER
 -------------------------------------------
 */
 #cowboysGame {
-  position: relative; }
+  position: relative;
+  margin-top: 4.8rem; }
 
 .submitOverlay:after {
   content: '';
@@ -870,13 +909,12 @@ XXI. COWBOYS ROSTER
   max-width: 300px;
   width: 100%;
   font-family: "Open Sans", Arial, sans-serif;
-  left: 0;
+  left: 50px;
   top: 0; }
   #roster .rosterLabel {
-    padding-left: 10px;
     text-transform: uppercase;
-    margin-bottom: 1.8rem;
-    line-height: 2.8rem; }
+    margin-bottom: 1.2rem;
+    line-height: 2.4rem; }
   #roster.fixedRoster {
     position: fixed !important;
     top: 50px; }
@@ -1007,7 +1045,7 @@ XXI. COWBOYS POSITIONS
 -------------------------------------------
 */
 #positions {
-  width: calc(100% - 400px);
+  width: calc(100% - 450px);
   margin-right: 50px;
   float: right;
   font-family: "Open Sans", Arial, sans-serif; }
@@ -1237,7 +1275,7 @@ XXI. RESULTS MODAL
   .resultsModal p {
     font: 1.4rem/1.8rem "Open Sans", Arial, sans-serif; }
   .resultsModal button {
-    background-color: #003c77;
+    background-color: #003b77;
     color: white;
     font: 1.6rem/3rem "Open Sans", Arial, sans-serif;
     text-align: center;
@@ -1286,5 +1324,3 @@ XXI. RESULTS MODAL
     font: 600 1.6rem/1.8rem "Open Sans", Arial, sans-serif;
     color: #002244;
     height: 3.6rem; }
-
-/*# sourceMappingURL=theme.css.map */

@@ -50,7 +50,13 @@ $bp800: "(max-width: 800px)";
 $bp650: "(max-width: 650px)";
 $bp400: "(max-width: 400px)";
 
-
+@mixin rotate($value) {
+  -ms-transform: roate($value);
+  -webkit-transform: rotate($value);
+  -moz-transform: rotate($value);
+  -o-transform: rotate($value);
+  transform: rotate($value);
+}
 
 /*
 -------------------------------------------
@@ -220,8 +226,26 @@ IV. CONTENT HEADER
 }
 #contentHeader img {
   width: 100%;
-  margin-bottom: .3rem;
+  &.ledeCut {
+    position: absolute;
+    width: 35%;
+    bottom: 1px;
+    max-width: 500px;
+  }
 }
+#staubach {
+  right: 35%;
+  z-index: 500;
+}
+#smith {
+  right: 22%;
+  z-index:400;
+}
+#dez {
+  right: 5%;
+  z-index: 300;
+}
+
 #contentHeader .cutline {
   padding: 0 2rem;
   margin: 0 0 .6rem 0;
@@ -256,14 +280,21 @@ VI. STORY HEAD, BYLINES AND INTRO
 
 #storyHead {
   margin: 4.8rem auto 2.4rem auto;
-  text-align: center;
-  color: #3d3d3d;
+  color: white;
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  z-index: 1000;
 }
 #storyHead h1 {
-  font-size: 6.4rem;
+  font-size: 9.6rem;
   letter-spacing: -.2rem;
-  line-height: 7.6rem;
+  line-height: 10.2rem;
   margin-bottom: 1.8rem;
+  font-weight: 700;
+  font-style: italic;
+  text-shadow: 2px 2px 0px $cowboysSilver, 2px 0px 0px $cowboysSilver, 0px 2px 0px $cowboysSilver;
+  letter-spacing: -1px;
 }
 #storyHead h2 {
   font-size: 3.2rem;
@@ -273,9 +304,24 @@ VI. STORY HEAD, BYLINES AND INTRO
   font-family: 'Open Sans', Arial, sans-serif;
   font-size: 1.8rem;
   line-height: 3rem;
-  margin-bottom: 1.8rem;
   text-transform: uppercase;
+  color: #3d3d3d;
+  -webkit-transform: skew(12deg);
+  -moz-transform: skew(12deg);
+  -o-transform: skew(12deg);
+  transform: skew(12deg);
+  display: inline-block;
+  padding: 0 10px;
+  margin-bottom: 0;
 }
+  .polyText {
+  background-color: white;
+  -webkit-transform: skew(-12deg);
+  -moz-transform: skew(-12deg);
+  -o-transform: skew(-12deg);
+  transform: skew(-12deg);
+  display: inline-block;
+  }
 .bylineBlock {
   text-align: center;
   max-width: 650px;
@@ -968,6 +1014,7 @@ XXI. COWBOYS ROSTER
 
 #cowboysGame {
   position: relative;
+  margin-top: 4.8rem;
 }
 .submitOverlay {
   &:after {
@@ -987,13 +1034,12 @@ XXI. COWBOYS ROSTER
   max-width: 300px;
   width: 100%;
   font-family: $sansSerif;
-  left: 0;
+  left: 50px;
   top: 0;
   .rosterLabel {
-    padding-left: 10px;
     text-transform: uppercase;
-    margin-bottom: 1.8rem;
-    line-height: 2.8rem;
+    margin-bottom: 1.2rem;
+    line-height: 2.4rem;
   }
   &.fixedRoster {
     position: fixed !important;
@@ -1151,7 +1197,7 @@ XXI. COWBOYS POSITIONS
 
 
 #positions {
-  width: calc(100% - 400px);
+  width: calc(100% - 450px);
   margin-right: 50px;
   float: right;
   font-family: $sansSerif;
