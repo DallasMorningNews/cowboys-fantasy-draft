@@ -235,7 +235,7 @@ VI. STORY HEAD, BYLINES AND INTRO
   margin: 4.8rem auto 2.4rem auto;
   color: white;
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 5%;
   z-index: 1000; }
 
@@ -246,7 +246,7 @@ VI. STORY HEAD, BYLINES AND INTRO
   margin-bottom: 1.8rem;
   font-weight: 700;
   font-style: italic;
-  text-shadow: 2px 2px 0px #acc0c6, 2px 0px 0px #acc0c6, 0px 2px 0px #acc0c6;
+  text-shadow: 2px 2px 0px #acc0c6, 2px 0px 0px #acc0c6, 0px 2px 0px #acc0c6, 5px 5px 3px #0f0f0f;
   letter-spacing: -1px; }
 
 #storyHead h2 {
@@ -1275,7 +1275,7 @@ XXI. RESULTS MODAL
   .resultsModal p {
     font: 1.4rem/1.8rem "Open Sans", Arial, sans-serif; }
   .resultsModal button {
-    background-color: #003b77;
+    background-color: #003c77;
     color: white;
     font: 1.6rem/3rem "Open Sans", Arial, sans-serif;
     text-align: center;
@@ -1324,3 +1324,5 @@ XXI. RESULTS MODAL
     font: 600 1.6rem/1.8rem "Open Sans", Arial, sans-serif;
     color: #002244;
     height: 3.6rem; }
+
+/*# sourceMappingURL=theme.css.map */

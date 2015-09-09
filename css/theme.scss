@@ -282,7 +282,7 @@ VI. STORY HEAD, BYLINES AND INTRO
   margin: 4.8rem auto 2.4rem auto;
   color: white;
   position: absolute;
-  top: 20%;
+  top: 30%;
   left: 5%;
   z-index: 1000;
 }
@@ -293,7 +293,7 @@ VI. STORY HEAD, BYLINES AND INTRO
   margin-bottom: 1.8rem;
   font-weight: 700;
   font-style: italic;
-  text-shadow: 2px 2px 0px $cowboysSilver, 2px 0px 0px $cowboysSilver, 0px 2px 0px $cowboysSilver;
+  text-shadow: 2px 2px 0px $cowboysSilver, 2px 0px 0px $cowboysSilver, 0px 2px 0px $cowboysSilver, 5px 5px 3px rgb(15,15,15);
   letter-spacing: -1px;
 }
 #storyHead h2 {
