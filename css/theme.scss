@@ -45,13 +45,13 @@ $grey225: #e1e1e1;
 $sansSerif: 'Open Sans', Arial, sans-serif;
 $serif: Merriweather, Georgia, serif;
 
-$bp1025: "(max-width: 1025px)";
+$bp1100: "(max-width: 1100px)";
 $bp800: "(max-width: 800px)";
-$bp650: "(max-width: 650px)";
+$bp750: "(max-width: 750px)";
 $bp400: "(max-width: 400px)";
 
 @mixin rotate($value) {
-  -ms-transform: roate($value);
+  -ms-transform: rotate($value);
   -webkit-transform: rotate($value);
   -moz-transform: rotate($value);
   -o-transform: rotate($value);
@@ -84,7 +84,7 @@ body {
 }
 .noScroll {
   overflow:auto;
-  @media #{$bp650} {
+  @media #{$bp750} {
     overflow: hidden;
   }
 }
@@ -231,19 +231,26 @@ IV. CONTENT HEADER
     width: 35%;
     bottom: 1px;
     max-width: 500px;
+    transition: all 1s ease-out;
   }
 }
 #staubach {
   right: 35%;
   z-index: 500;
+  opacity: 1;
+
 }
 #smith {
-  right: 22%;
+  right: 20%;
   z-index:400;
+  opacity: 1;
+
 }
 #dez {
-  right: 5%;
+  right: 0%;
   z-index: 300;
+  opacity: 1;
+
 }
 
 #contentHeader .cutline {
@@ -263,10 +270,33 @@ V. CONTENT WELL
   max-width: 1400px;
   overflow: hidden;
   position: relative;
-  width: 90%;
-}
+  width: 90%; }
+
 .contentWell p {
-  max-width: 650px;
+  max-width: 650px; }
+
+.contentWell p:last-of-type {
+  margin-bottom: 0; }
+
+.wellTop {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.contentWell .sansIntro {
+  width: calc(100% - 450px);
+  float: left;
+  margin-left: 50px;
+  max-width: none;
+  @media (max-width: 900px) {
+    width: calc(100% - 100px);
+    margin: 0 50px 2.4rem;
+  }
+  @media (max-width: 800px) {
+    margin: 0 25px 2.4rem;
+    width: calc(100% - 50px);
+  }
 }
 .contentWell p:last-of-type {
   margin-bottom: 0;
@@ -285,20 +315,35 @@ VI. STORY HEAD, BYLINES AND INTRO
   top: 30%;
   left: 5%;
   z-index: 1000;
+  padding-bottom: 2.4rem;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    @include rotate(45deg);
+    border-bottom: 2px dotted $cowboysSilver;
+    border-right: 2px dotted $cowboysSilver;
+    margin-left: 12px;
+  }
 }
 #storyHead h1 {
   font-size: 9.6rem;
   letter-spacing: -.2rem;
   line-height: 10.2rem;
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.2rem;
   font-weight: 700;
   font-style: italic;
-  text-shadow: 2px 2px 0px $cowboysSilver, 2px 0px 0px $cowboysSilver, 0px 2px 0px $cowboysSilver, 5px 5px 3px rgb(15,15,15);
+  text-shadow: 2px 2px 0px $cowboysSilver, 2px 0px 0px $cowboysSilver, 0px 2px 0px $cowboysSilver, 5px 5px 5px rgb(15,15,15), 0px 0px 10px rgba(33,33,33, 1);
   letter-spacing: -1px;
 }
 #storyHead h2 {
   font-size: 3.2rem;
   line-height: 4.2rem;
+  max-width: 60%;
+  text-shadow: 3px 3px 2px rgb(15,15,15);
+  font-style: italic;
 }
 #storyHead h3 {
   font-family: 'Open Sans', Arial, sans-serif;
@@ -321,11 +366,24 @@ VI. STORY HEAD, BYLINES AND INTRO
   -o-transform: skew(-12deg);
   transform: skew(-12deg);
   display: inline-block;
+  margin-left: 10px;
+}
+@media (max-width: 1150px) {
+  #storyHead {
+    top: 20%;
+    h1 {
+      font-size: 7.2rem;
+      line-height: 7.8rem;
+    }
+    h2 {
+      font-size: 2.4rem;
+      line-height: 3rem;
+    }
   }
+}
 .bylineBlock {
-  text-align: center;
   max-width: 650px;
-  margin: 0 auto 3.6rem;
+  margin: 4.8rem 0 1.2rem 50px;
 }
 .bylineBlock p {
   color: #3d3d3d;
@@ -334,7 +392,7 @@ VI. STORY HEAD, BYLINES AND INTRO
   font-size: 1.4rem;
   font-style: italic;
   margin: 0 2.4rem .6rem 0;
-  text-align: center;
+  width: auto;
 }
 .bylineBlock p:last-of-type {
   margin-right: 0;
@@ -342,6 +400,10 @@ VI. STORY HEAD, BYLINES AND INTRO
 .intro {
   font-size: 2.4rem;
   line-height: 4rem;
+}
+.sansIntro {
+  font-family: $sansSerif;
+  margin-bottom: 1.8rem !important;
 }
 .dropcap {
   color: #3d3d3d;
@@ -363,16 +425,17 @@ VI. STORY HEAD, BYLINES AND INTRO
   #storyHead h1 {
     font-size: 4.8rem;
     line-height: 5.4rem;
-    margin-bottom: 1.8rem;
   }
   #storyHead h2 {
-    font-size: 2.4rem;
-    line-height: 3rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    line-height: 2.4rem;
   }
   #storyHead h3 {
     font-size: 1.4rem;
     line-height: 1.8rem;
+  }
+  .polyText {
+    margin-bottom: 1.2rem;
   }
   .intro {
     font-size: 2.2rem;
@@ -385,16 +448,71 @@ VI. STORY HEAD, BYLINES AND INTRO
   }
 }
 
+@media (max-width: 800px) {
+  .bylineBlock {
+    margin-left: 25px;  
+  }
+}
+
+@media (max-width: 750px) {
+  .bylineBlock {
+    margin-top: 0;
+  }
+  #storyHead {
+    position: relative;
+    width: 90%;
+    margin: 4.8rem 0 2.4rem 25px;
+    top: auto;
+    left: auto;
+    padding-bottom: 0;
+    &:after {
+      display: none; 
+    }
+    h1 {
+      font-size: 4.8rem;
+      line-height: 4.8rem;
+      color: $cowboysSilver;
+      text-shadow: 2px 2px 0px $warmBlack, 2px 0px 0px $warmBlack, 0px 2px 0px $warmBlack;
+    }
+    h2 {
+      color: $warmBlack;
+      text-shadow: none;
+      max-width: 75%;
+    }
+    h3 {
+      color: white;
+    }
+    .polyText {
+      background-color: $warmBlack;
+    }
+  }
+  #contentHeader img {
+    &.ledeCut {
+      bottom: 187px;
+    }
+  }
+  #staubach {
+    right: 65%;
+  }
+  #smith {
+    right: 32.5%;
+  }
+
+}
+
 @media (max-width: 600px) {
   .bylineBlock p {
     display: block;
     margin: 0 0 .3rem 0;
+    width: 100%;
+  }
+  #storyHead h2 {
+    max-width: none;
   }
 }
 
 @media (max-width: 500px) {
   #storyHead h1 {
-    font-size: 4.2rem;
     line-height: 4.8rem;
     letter-spacing: 0;
   }
@@ -405,6 +523,20 @@ VI. STORY HEAD, BYLINES AND INTRO
   .dropcap {
     font-size: 10rem;
     line-height: 7.6rem;
+  }
+}
+@media (max-width: 395px) {
+  #storyHead {
+    margin: 2.4rem 0 2.4rem 25px;
+  }
+  #storyHead h1 {
+    font-size: 3.6rem;
+    line-height: 4.2rem;
+  }
+   #contentHeader img {
+    &.ledeCut {
+      bottom: 181px;
+    }
   }
 }
 
@@ -761,32 +893,6 @@ XIV. SLIDESHOWS
   }
 }
 
-
-/*
--------------------------------------------
-XV. CREDIT LINKS
--------------------------------------------
-*/
-
-.credits {
-  border-bottom: 1px solid #CECDC6;
-  margin: 6rem auto 0;
-  max-width: 650px;
-  padding-bottom: 2.4rem;
-}
-.credits p {
-  display: block;
-  float: left;
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-size: 1.2rem;
-  line-height: 1.8rem;
-  margin: 0 2rem 0rem 0;
-}
-.credits a {
-  color: #3d3d3d;
-  font-weight: bold;
-}
-
 /*
 -------------------------------------------
 XVI. MORE LINKS
@@ -947,9 +1053,10 @@ XIX. SOCIAL SHARING AND COMMENTS
 .shareCommentsTop {
   max-width: none;
   width: auto;
+  margin: 2.4rem 0px 2.4rem 50px;
 }
 .shareCommentsTop table {
-  margin: 0 auto;
+  margin: 0 0;
 }
 
 .gig-counter {
@@ -965,14 +1072,21 @@ XIX. SOCIAL SHARING AND COMMENTS
 
 @media (max-width: 860px) {
   .shareComments {
-    margin: 2.4rem auto 4.8rem;
+    margin: 2.4rem auto 4.8rem auto;
   }
   .shareCommentsTop {
     max-width: 46rem;
+    margin: 2.4rem 0 4.8rem 50px;
   }
   .gig-bar-container img {
     width: 65px;
     margin-right: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .shareCommentsTop {
+    margin-left: 25px;
   }
 }
 
@@ -1034,7 +1148,7 @@ XXI. COWBOYS ROSTER
   max-width: 300px;
   width: 100%;
   font-family: $sansSerif;
-  left: 50px;
+  right: 50px;
   top: 0;
   .rosterLabel {
     text-transform: uppercase;
@@ -1050,12 +1164,16 @@ XXI. COWBOYS ROSTER
     bottom: 0px;
     top: auto !important;
   }
-  @media #{$bp650} {
+  @media #{$bp800} {
+    right: 25px;
+  }
+  @media #{$bp750} {
     width: 100%;
     max-width: none;
     position: relative;
     top: auto;
     left: auto;
+    right: auto;
     padding: 0 20px;
     .rosterLabel {
       padding-left: 0;
@@ -1073,10 +1191,11 @@ XXI. COWBOYS ROSTER
 }
 .rosterSlot {
   width: 100%;
-  padding: 1rem 0rem 1rem 3rem;
+  padding: 1rem 0rem 1rem 6rem;
   position: relative;
   border-top: 1px solid $cowboysSilver;
   border-right: 1px solid $cowboysSilver;
+  border-left: 1px solid $cowboysSilver;
   height: 70px;
   &.filledSlot {
     background-color: rgb(245,245,245);
@@ -1118,7 +1237,7 @@ XXI. COWBOYS ROSTER
   }
   .playerInfo {
     float: left;
-    width: calc(100% - 130px)
+    width: calc(100% - 80px)
   }
   h5 {
     color: $warmBlack;
@@ -1130,7 +1249,7 @@ XXI. COWBOYS ROSTER
       line-height: 20px;
       position: absolute;
       top: 0;
-      left: 0;
+      right: 0;
       background-color: $grey235;
       color: $warmBlack;
       width: 25px;
@@ -1138,7 +1257,7 @@ XXI. COWBOYS ROSTER
       text-align: center;
       font-weight: normal;
       font-size: 1.4rem;
-      border-right: 1px solid white;
+      border-left: 1px solid white;
       border-bottom: 1px solid white;
     }
   }
@@ -1155,14 +1274,13 @@ XXI. COWBOYS ROSTER
   i {
     transition: background-color .2s ease-out;
     background-color: $grey235;
-    border-left: 1px solid white;
     &:hover {
       background-color: $grey225;
     }
   }
   .fa-minus-circle {
     position: absolute;
-    right: 0;
+    left: 0;
     top: 0;
     font-size: 30px !important;
     line-height: 70px !important;
@@ -1183,8 +1301,16 @@ XXI. COWBOYS ROSTER
     margin-right: 10px;
     float: left;
   }
-  @media #{$bp650} {
+  @media #{$bp750} {
     border-left: 1px solid $cowboysSilver;
+    .slotName {
+      font-size: 2.4rem;
+    }
+  }
+  @media #{$bp400} {
+    .slotName {
+      font-size: 1.6rem;
+    }
   }
 }
 
@@ -1198,14 +1324,14 @@ XXI. COWBOYS POSITIONS
 
 #positions {
   width: calc(100% - 450px);
-  margin-right: 50px;
-  float: right;
+  margin-left: 50px;
+  float: left;
   font-family: $sansSerif;
   @media #{$bp800} {
-    width: calc(100% - 350px);
-    margin-right: 25px;
+    width: calc(100% - 375px);
+    margin-left: 25px;
   }
-  @media #{$bp650} {
+  @media #{$bp750} {
     width: 100%;
     margin-right: 0;
     float: none;
@@ -1213,9 +1339,10 @@ XXI. COWBOYS POSITIONS
 }
 .posBlock {
   width: 100%;
-  margin-bottom: 6rem;
-  padding-bottom: 2.4rem;
-  border-bottom: 1px solid $grey235;
+  margin-bottom: 4.8rem;
+  padding-bottom: 4.8rem;
+  border-bottom: 2px dotted $cowboysSilver;
+  position: relative;
   h3 {
     font: 3rem/3rem $sansSerif;
     color: $cowboysNavy;
@@ -1235,7 +1362,7 @@ XXI. COWBOYS POSITIONS
     padding-bottom: 0;
     border-bottom: none;
   }
-  @media #{$bp650} {
+  @media #{$bp750} {
     position: fixed;
     top: 0;
     left: 0;
@@ -1244,7 +1371,7 @@ XXI. COWBOYS POSITIONS
     background-color: white;
     padding: 20px;
     margin-left: 100%;
-    transition: all .1s ease-out;
+    transition: all .5s ease-out;
     &.viewable {
       margin-left: 0;
       z-index: 1000;
@@ -1308,7 +1435,7 @@ XXI. COWBOYS POSITIONS
     width: 47.5px;
     height: 47.5px;
     background-color: $grey235;
-    line-height: 46.5px;
+    line-height: 47.5px;
     display: block;
     color: $cowboysNavy;
     position: absolute;
@@ -1320,6 +1447,7 @@ XXI. COWBOYS POSITIONS
     font-weight: bold;
     transition: all .1s ease-out;
     z-index: 99;
+    padding: 0;
     .fa-plus-circle {
       color: $actionGreen;
     }
@@ -1334,7 +1462,7 @@ XXI. COWBOYS POSITIONS
       outline: 0;
     }
   }
-  @media #{$bp1025} {
+  @media #{$bp1100} {
     width: 100%;
     float: none;
     margin-right: 0;
@@ -1349,6 +1477,26 @@ XXI. COWBOYS POSITIONS
     h4 {
       font-size: 1.6rem;
       line-height: 1.8rem;
+    }
+  }
+  @media #{$bp750} {
+    h4 {
+      font-size: 2.2rem;
+      line-height: 3rem;
+    }
+    p {
+      font-size: 1.4rem;
+      line-height: 1.8rem;
+    }
+  }
+  @media #{$bp400} {
+    h4 {
+      font-size: 1.6rem;
+      line-height: 1.8rem;
+    }
+    p {
+      font-size: 1.2rem;
+      line-height: 1.4rem;
     }
   }
 }
@@ -1372,7 +1520,7 @@ XXI. COWBOYS POSITIONS
 
 .rosterReturn {
   display: none;
-  @media #{$bp650} {
+  @media #{$bp750} {
     display: inline-block;
     background-color: $grey235;
     color: white;
@@ -1442,7 +1590,7 @@ XXI. RESULTS MODAL
   position: fixed;
   top: 20vh;
   left: 50%;
-  margin-left: -350px;
+  margin-left: -375px;
   background-color: rgba(250,250,250, 1);
   z-index: 2000;
   border-radius: 5px;
@@ -1471,6 +1619,7 @@ XXI. RESULTS MODAL
     border: none;
     text-transform: uppercase;
     cursor: pointer;
+    border-radius: 5px;
     .fa-twitter {
       color: white;
     }
@@ -1484,7 +1633,31 @@ XXI. RESULTS MODAL
     &:last-of-type {
       margin-right: 0;
     }
-}
+  }
+  @media #{$bp750} {
+    height: 90vh;
+    top: 5vh;
+    padding: 25px;
+    width: 90vw;
+    left: 5vw;
+    margin-left: 0;
+    overflow-y: auto;
+    .tweetRoster {
+      clear: left;
+    }
+  }
+  @media (max-width: 600px) {
+    button {
+      float: none;
+      width: 75%;
+      display: block;
+      margin: 2.4rem auto;
+      font: 1.6rem/4rem $sansSerif;
+      &:last-of-type {
+        margin-right: auto;
+      }
+    }
+  }
 }
 
 .finalRoster {
@@ -1521,7 +1694,62 @@ XXI. RESULTS MODAL
     color: $cowboysNavy;
     height: 3.6rem;
   }
+  @media #{$bp750} {
+    width: 48%;
+    margin-right: 4%;
+    height: 75px;
+    padding: 10px 0;
+    border-bottom: 1px solid $cowboysSilver;
+    &:nth-of-type(even) {
+      margin-right: 0;
+    }
+    &:last-of-type {
+      margin-bottom: 2.4rem;
+    }
+    img {
+      width: 55px;
+      float: left;
+    }
+    h5 {
+      float: left;
+      margin-left: 10px;
+      width: calc(100% - 170px);
+      text-align: left;
+    }
+    h4 {
+      float: right;
+      width: 50px;
+      font: 400 1.8rem/3rem $sansSerif;
+      height: 50px;
+      background-color: $grey235;
+      text-align: center;
+      line-height: 50px;
+    }
+    @media (max-width: 550px) {
+      width: 100%;
+      margin-right: 0;
+      float: none;
+      margin-bottom: 1.2rem;
+      button {
+        width: 100%;
+      }
+    }
+
+  }
 }
 
+.directions .fa-plus-circle {
+  color: $actionGreen;
+}
+
+.directions .fa-minus-circle {
+  color: $actionRed;
+}
+
+.photoCredit {
+  font-size: 1.2rem;
+  line-height: 1.4rem;
+  font-family: $sansSerif;
+}
 
 

@@ -368,8 +368,8 @@ $(document).ready(function() {
             // setting up the target id based on the targetPositon
             targetPosition === "qb" ? targetID = "#quarterbacks" : targetPosition === "rb" ? targetID = "#runningbacks" : targetPosition === "wr" ? targetID = "#widereceivers" : targetPosition === "def" ? targetID = "#defenses" : targetID = "#kickers";
 
-            // if the window is greater than 650, we scroll to that position. If it's less, we display that position and mark the body as unscrollable
-            if (windowWidth > 650) {
+            // if the window is greater than 750, we scroll to that position. If it's less, we display that position and mark the body as unscrollable
+            if (windowWidth > 750) {
                 // scroll the body to the targetID
                 $('html, body').animate({
                     scrollTop: $(targetID).offset().top
@@ -553,7 +553,7 @@ $(document).ready(function() {
         //console.log("Share to Facebook");
         FB.ui({
             method: 'feed',
-            name: "Headline here",
+            name: storyTitle,
             link: storyURL,
             caption: 'I chose '+names+' for my Cowboys fantasy draft',
             picture: storyIMG,
